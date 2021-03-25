@@ -1,0 +1,135 @@
+# RBAC authn and authz
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tcprod-elastic
+  namespace: tcprod-efk
+  labels:
+    k8s-app: tcprod-elastic
+    addonmanager.kubernetes.io/mode: Reconcile
+---
+
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: tcprod-elastic
+  labels:
+    k8s-app: tcprod-elastic
+    addonmanager.kubernetes.io/mode: Reconcile
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - "services"
+      - "namespaces"
+      - "endpoints"
+    verbs:
+      - "get"
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: tcprod-efk
+  name: tcprod-elastic
+  labels:
+    k8s-app: tcprod-elastic
+    addonmanager.kubernetes.io/mode: Reconcile
+subjects:
+  - kind: ServiceAccount
+    name: tcprod-elastic
+    namespace: tcprod-efk
+    apiGroup: ""
+roleRef:
+  kind: ClusterRole
+  name: tcprod-elastic
+  apiGroup: ""
+---
+# Elasticsearch deployment itself
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: tcprod-elastic-cluster
+  namespace: tcprod-efk
+  labels:
+    k8s-app: tcprod-elastic
+    version: v7.4.3
+    addonmanager.kubernetes.io/mode: Reconcile
+spec:
+  serviceName: tcprod-elastic
+  replicas: 3
+  selector:
+    matchLabels:
+      k8s-app: tcprod-elastic
+      version: v7.4.3
+  template:
+    metadata:
+      labels:
+        k8s-app: tcprod-elastic
+        version: v7.4.3
+    spec:
+      serviceAccountName: tcprod-elastic
+      containers:
+        - image: quay.io/fluentd_elasticsearch/elasticsearch:v7.4.3
+          name: tcprod-elastic
+          imagePullPolicy: Always
+          resources:
+            # need more cpu upon initialization, therefore burstable class
+            limits:
+              cpu: 1000m
+              memory: 3Gi
+            requests:
+              cpu: 100m
+              memory: 3Gi
+          ports:
+            - containerPort: 9200
+              name: db
+              protocol: TCP
+            - containerPort: 9300
+              name: transport
+              protocol: TCP
+          livenessProbe:
+            tcpSocket:
+              port: transport
+            initialDelaySeconds: 5
+            timeoutSeconds: 10
+          readinessProbe:
+            tcpSocket:
+              port: transport
+            initialDelaySeconds: 5
+            timeoutSeconds: 10
+          volumeMounts:
+            - name: tcprod-efk
+              mountPath: /data
+          env:
+            - name: "NAMESPACE"
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: "MINIMUM_MASTER_NODES"
+              value: "1"
+            - name: discovery.seed_hosts
+              value: "tcprod-elastic-cluster-0.tcprod-elastic,tcprod-elastic-cluster-1.tcprod-elastic,tcprod-elastic-cluster-2.tcprod-elastc"
+            - name: cluster.initial_master_nodes
+              value: "tcprod-elastic-cluster-0,tcprod-elastic-cluster-1,tcprod-elastic-cluster-2"
+            #- name: ES_JAVA_OPTS
+            #value: "-Xms512m -Xmx512m"
+      # Elasticsearch requires vm.max_map_count to be at least 262144.
+      # If your OS already sets up this number to a higher value, feel free
+      # to remove this init container.
+      initContainers:
+        - image: alpine:3.6
+          command: ["/sbin/sysctl", "-w", "vm.max_map_count=262144"]
+          name: tcprod-elastic-init
+          securityContext:
+            privileged: true
+  volumeClaimTemplates:
+  - metadata:
+      name: tcprod-elastic
+      labels:
+        k8s-app: tcprod-elastic
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: nfs-storage
+      resources:
+        requests:
+          storage: 5Gi

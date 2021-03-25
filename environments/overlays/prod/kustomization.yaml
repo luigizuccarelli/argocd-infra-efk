@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+  - ../../../manifests/services/elasticsearch-fluentd-kibana/base
+resources:
+  - namespace/namespace.yaml
+  - namespace/limit-range.yaml
+  - namespace/resource-quota.yaml
+
+namespace: tcprod-efk
+

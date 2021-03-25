@@ -1,0 +1,10 @@
+namePrefix: 
+
+resources:
+  - fluentd-configmap.yaml
+  - elasticsearch-service.yaml
+  - elasticsearch-statefulset.yaml
+  - kibana-service.yaml
+  - kibana-deploy.yaml
+  - fluentd-daemonset.yaml
+
