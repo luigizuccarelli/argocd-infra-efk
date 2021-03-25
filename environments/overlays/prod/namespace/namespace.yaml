@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: elastic-logging
+  name: tcprod-efk
   labels:
     cost-tenancy: Dedicated
-    dept: Development
+    dept: TraficControl
     org: Ericsson
     network-share: ericsson
     product: tcprod-efk

@@ -1,18 +1,19 @@
+# RBAC authn and authz
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: tcprod-elastic
-  namespace: tcprod-elastic
+  name: lmz-test-es
+  namespace: test
   labels:
-    k8s-app: tcprod-elastic
+    k8s-app: lmz-test-es
     addonmanager.kubernetes.io/mode: Reconcile
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: tcprod-elastic
+  name: lmz-test-es
   labels:
-    k8s-app: tcprod-elastic
+    k8s-app: lmz-test-es
     addonmanager.kubernetes.io/mode: Reconcile
 rules:
   - apiGroups:
@@ -29,47 +30,48 @@ rules:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  namespace: tcprod-elastic
-  name: tcprod-elastic
+  namespace: test
+  name: lmz-test-es
   labels:
-    k8s-app: tcprod-elastic
+    k8s-app: lmz-test-es
     addonmanager.kubernetes.io/mode: Reconcile
 subjects:
   - kind: ServiceAccount
-    name: tcprod-elastic
-    namespace: tcprod-elastic
+    name: lmz-test-es
+    namespace: test
     apiGroup: ""
 roleRef:
   kind: ClusterRole
-  name: tcprod-elastic
+  name: lmz-test-es
   apiGroup: ""
 ---
+# Elasticsearch deployment itself
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: tcprod-elastic-cluster
-  namespace: tcprod-elastic
+  name: lmz-test-es-cluster
+  namespace: test
   labels:
-    k8s-app: tcprod-elastic
+    k8s-app: lmz-test-es
     version: v7.11.2
     addonmanager.kubernetes.io/mode: Reconcile
 spec:
-  serviceName: tcprod-elastic
+  serviceName: lmz-test-es
   replicas: 3
   selector:
     matchLabels:
-      k8s-app: tcprod-elastic
+      k8s-app: lmz-test-es
       version: v7.11.2
   template:
     metadata:
       labels:
-        k8s-app: tcprod-elastic
+        k8s-app: lmz-test-es
         version: v7.11.2
     spec:
-      serviceAccountName: tcprod-elastic
+      serviceAccountName: lmz-test-es
       containers:
         - image: docker.io/elasticsearch:7.11.2
-          name: tcprod-elastic
+          name: lmz-test-es
           imagePullPolicy: Always
           securityContext:
             privileged: true
@@ -104,7 +106,7 @@ spec:
               path: /_cluster/health?wait_for_status=yellow&timeout=50s
               port: 9200
           volumeMounts:
-            - name: tcprod-elastic
+            - name: lmz-test-es
               mountPath: /usr/share/elasticsearch/data
           env:
             - name: log-level
@@ -115,6 +117,8 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
+            #- name: "MINIMUM_MASTER_NODES"
+            #  value: "1"
             - name: node.master
               value: "true"
             - name: node.name
@@ -122,12 +126,14 @@ spec:
                 fieldRef:
                   fieldPath: metadata.name
             - name: discovery.seed_hosts
-              value: "tcprod-elastic-cluster-0.tcprod-elastic.tcprod-efk.svc.cluster.local"
+              value: "lmz-test-es-cluster-0.lmz-test-es.test.svc.cluster.local"
             - name: cluster.initial_master_nodes
-              value: "tcprod-elastic-cluster-0"
+              value: "lmz-test-es-cluster-0"
             - name: ES_JAVA_OPTS
               value: "-Xms512m -Xmx512m"
       # Elasticsearch requires vm.max_map_count to be at least 262144.
+      # If your OS already sets up this number to a higher value, feel free
+      # to remove this init container.
       initContainers:
         - name: increase-vm-heap
           image: alpine:3.6
@@ -141,9 +147,9 @@ spec:
             privileged: true
   volumeClaimTemplates:
   - metadata:
-      name: tcprod-elastic
+      name: lmz-test-es
       labels:
-        k8s-app: tcprod-elastic
+        k8s-app: lmz-test-es
     spec:
       accessModes: [ "ReadWriteOnce" ]
       storageClassName: nfs-storage

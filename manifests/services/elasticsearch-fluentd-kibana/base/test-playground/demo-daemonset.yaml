@@ -1,18 +1,18 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: tcprod-fluentd
-  namespace: tcprod-efk
+  name: lmz-test-a
+  namespace: test
   labels:
-    k8s-app: tcprod-fluentd
+    k8s-app: lmz-test
     addonmanager.kubernetes.io/mode: Reconcile
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: tcprod-fluentd
+  name: lmz-test-a
   labels:
-    k8s-app: tcprod-fluentd
+    k8s-app: lmz-test
     addonmanager.kubernetes.io/mode: Reconcile
 rules:
 - apiGroups:
@@ -20,6 +20,7 @@ rules:
   resources:
   - "namespaces"
   - "pods"
+  - "configmaps"
   verbs:
   - "get"
   - "watch"
@@ -28,47 +29,47 @@ rules:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: tcprod-fluentd
+  name: lmz-test-a
   labels:
-    k8s-app: tcprod-fluentd
+    k8s-app: lmz-test
     addonmanager.kubernetes.io/mode: Reconcile
 subjects:
 - kind: ServiceAccount
-  name: tcprod-fluentd
-  namespace: tcprod-efk
+  name: lmz-test-a
+  namespace: test
   apiGroup: ""
 roleRef:
   kind: ClusterRole
-  name: tcprod-fluentd
+  name: lmz-test-a
   apiGroup: ""
 ---
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: tcprod-fluentd-v3.1.0
-  namespace: tcprod-efk
+  name: lmz-test-v3.1.0
+  namespace: test
   labels:
-    k8s-app: tcprod-fluentd
+    k8s-app: lmz-test
     version: v3.1.0
     addonmanager.kubernetes.io/mode: Reconcile
 spec:
   selector:
     matchLabels:
-      k8s-app: tcprod-fluentd
+      k8s-app: lmz-test
       version: v3.1.0
   template:
     metadata:
       labels:
-        k8s-app: tcprod-fluentd
+        k8s-app: lmz-test
         version: v3.1.0
     spec:
       securityContext:
         seccompProfile:
           type: RuntimeDefault
       priorityClassName: system-node-critical
-      serviceAccountName: tcprod-fluentd
+      serviceAccountName: lmz-test-a
       containers:
-      - name: tcprod-fluentd
+      - name: lmz-test
         image: quay.io/fluentd_elasticsearch/fluentd:v3.1.0
         env:
         - name: FLUENTD_ARGS
@@ -111,4 +112,4 @@ spec:
           path: /var/lib/docker/containers
       - name: config-volume
         configMap:
-          name: tcprod-fluentd
+          name: lmz-test

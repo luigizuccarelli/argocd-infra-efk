@@ -1,0 +1,575 @@
+{
+  "version": "v3.18.1",
+  "clusterGUID": "862f42e88e164081bf1da72cd29772af",
+  "datastoreLocked": true,
+  "clusterInformationRevision": "18047758",
+  "clusterType": "k8s,bgp,kubeadm,kdd",
+  "allocations": {
+    "10.100.130.128": [
+      {
+        "ip": "10.100.130.128",
+        "handle": "ipip-tunnel-addr-optiplex-01",
+        "node": "optiplex-01",
+        "type": "ipipTunnelAddress",
+        "inUse": true,
+        "owners": [
+          "Node(optiplex-01)"
+        ]
+      }
+    ],
+    "10.100.130.141": [
+      {
+        "ip": "10.100.130.141",
+        "handle": "k8s-pod-network.06bfdd364f775ac50a09892f51b11bfb40f4abd3c054056af9b30ac4807b9c64",
+        "pod": "calico-kube-controllers-6949477b58-wfnn7",
+        "namespace": "kube-system",
+        "node": "optiplex-01",
+        "creationTimestamp": "2021-03-26 16:14:21.127253008 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(kube-system/optiplex--01-k8s-calico--kube--controllers--6949477b58--wfnn7-eth0)"
+        ]
+      }
+    ],
+    "10.100.130.161": [
+      {
+        "ip": "10.100.130.161",
+        "handle": "k8s-pod-network.577a9fed9b5a0d13b31e742cf613de8b75b99dbffae33e1390bbc5eaa5e40e14",
+        "pod": "fluentd-es-v3.1.0-t8zdh",
+        "namespace": "kube-logging",
+        "node": "optiplex-01",
+        "creationTimestamp": "2021-03-26 16:34:15.436876435 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(kube-logging/optiplex--01-k8s-fluentd--es--v3.1.0--t8zdh-eth0)"
+        ]
+      }
+    ],
+    "10.100.252.0": [
+      {
+        "ip": "10.100.252.0",
+        "handle": "ipip-tunnel-addr-vm-non-optiplex-01",
+        "node": "vm-non-optiplex-01",
+        "type": "ipipTunnelAddress",
+        "inUse": true,
+        "owners": [
+          "Node(vm-non-optiplex-01)"
+        ]
+      }
+    ],
+    "10.100.252.47": [
+      {
+        "ip": "10.100.252.47",
+        "handle": "k8s-pod-network.ac5e1d21ac76a9731102e7d155462c35f2ab52a67506c50eaf6a7ec50800df9e",
+        "pod": "fluentd-es-v3.1.0-kzwkf",
+        "namespace": "kube-logging",
+        "node": "vm-non-optiplex-01",
+        "creationTimestamp": "2021-03-26 16:34:15.524198667 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(kube-logging/vm--non--optiplex--01-k8s-fluentd--es--v3.1.0--kzwkf-eth0)"
+        ]
+      }
+    ],
+    "10.100.252.48": [
+      {
+        "ip": "10.100.252.48",
+        "handle": "k8s-pod-network.a1198e1d5524509046cfa01879d8180497db38684a4bb0c76a89c781e8aa39dc",
+        "pod": "elasticsearch-logging-0",
+        "namespace": "kube-logging",
+        "node": "vm-non-optiplex-01",
+        "creationTimestamp": "2021-03-26 16:35:04.626099929 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(kube-logging/vm--non--optiplex--01-k8s-elasticsearch--logging--0-eth0)"
+        ]
+      }
+    ],
+    "10.107.151.106": [
+      {
+        "ip": "10.107.151.106",
+        "handle": "k8s-pod-network.477fd82cc11a5668ea798b88169afbb82d3f041659d8390576b4a5387d190961",
+        "pod": "fluentd-es-v3.1.0-c576v",
+        "namespace": "kube-logging",
+        "node": "optiplex-02",
+        "creationTimestamp": "2021-03-26 16:33:47.048091331 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(kube-logging/optiplex--02-k8s-fluentd--es--v3.1.0--c576v-eth0)"
+        ]
+      }
+    ],
+    "10.107.151.64": [
+      {
+        "ip": "10.107.151.64",
+        "handle": "ipip-tunnel-addr-optiplex-02",
+        "node": "optiplex-02",
+        "type": "ipipTunnelAddress",
+        "inUse": true,
+        "owners": [
+          "Node(optiplex-02)"
+        ]
+      }
+    ],
+    "10.107.151.96": [
+      {
+        "ip": "10.107.151.96",
+        "handle": "k8s-pod-network.bc1a9bd69cfa1b9bd3b1817d2992351b39de4e445bf7100f54dcac6ad10d1dc3",
+        "pod": "tekton-pipelines-webhook-56d5b66c98-2bxjz",
+        "namespace": "tekton-pipelines",
+        "node": "optiplex-02",
+        "creationTimestamp": "2021-03-23 21:16:20.780311655 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(tekton-pipelines/optiplex--02-k8s-tekton--pipelines--webhook--56d5b66c98--2bxjz-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.192": [
+      {
+        "ip": "10.99.213.192",
+        "handle": "ipip-tunnel-addr-optiplex-prime",
+        "node": "optiplex-prime",
+        "type": "ipipTunnelAddress",
+        "inUse": true,
+        "owners": [
+          "Node(optiplex-prime)"
+        ]
+      }
+    ],
+    "10.99.213.193": [
+      {
+        "ip": "10.99.213.193",
+        "handle": "k8s-pod-network.b203a7e4de0df73d6e5d5af92921a39009a9bac27fec2f773203ba7b258cab26",
+        "pod": "golang-second-echoservice-7c787fbf9d-sstn2",
+        "namespace": "poc-demo",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:43.54169549 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(poc-demo/optiplex--prime-k8s-golang--second--echoservice--7c787fbf9d--sstn2-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.194": [
+      {
+        "ip": "10.99.213.194",
+        "handle": "k8s-pod-network.0a26187844d17d7f2bcff72b53d44548e307be5c3b814476ce7cac6e52ba20de",
+        "pod": "argocd-dex-server-67dc4cc7d-dggqf",
+        "namespace": "argocd",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:43.604186336 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(argocd/optiplex--prime-k8s-argocd--dex--server--67dc4cc7d--dggqf-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.196": [
+      {
+        "ip": "10.99.213.196",
+        "handle": "k8s-pod-network.ab9fa81303566d6372f64286f596d0573cfd94204e1f5b8db9d97cffc99b42b6",
+        "pod": "tekton-triggers-controller-55dd8f9f47-kdqtz",
+        "namespace": "tekton-pipelines",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:34.962113451 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(tekton-pipelines/optiplex--prime-k8s-tekton--triggers--controller--55dd8f9f47--kdqtz-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.197": [
+      {
+        "ip": "10.99.213.197",
+        "handle": "k8s-pod-network.1544903e0b8b63f9136029108d92af317d3ed7f1ebb581b9c635d8eaa826f6dc",
+        "pod": "golang-gitwebhook-interface-644c647694-27mf9",
+        "namespace": "golang-cicd",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:43.840521179 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(golang-cicd/optiplex--prime-k8s-golang--gitwebhook--interface--644c647694--27mf9-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.198": [
+      {
+        "ip": "10.99.213.198",
+        "handle": "k8s-pod-network.10ba803b34a86a1a2046e927d37bc45285b32f261a2cfd96ad8c6f97fed21ae1",
+        "pod": "tekton-triggers-webhook-5c676bddb8-lg8xj",
+        "namespace": "tekton-pipelines",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:30.879004744 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(tekton-pipelines/optiplex--prime-k8s-tekton--triggers--webhook--5c676bddb8--lg8xj-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.200": [
+      {
+        "ip": "10.99.213.200",
+        "handle": "k8s-pod-network.fdcdff6a7817fd366ac1d4f431539f78bb4f1f5f3fee99d0f9d6d6aa833cf330",
+        "pod": "argocd-repo-server-768766db89-9d9f2",
+        "namespace": "argocd",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:29.834391771 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(argocd/optiplex--prime-k8s-argocd--repo--server--768766db89--9d9f2-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.204": [
+      {
+        "ip": "10.99.213.204",
+        "handle": "k8s-pod-network.36478ffe98f3161b3d34214ffbe5b63cdfab2d8cc1e2b072e94be059efa6974f",
+        "pod": "golang-simple-echoservice-5c4c54bdf4-97lfz",
+        "namespace": "poc-demo",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:43.382216897 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(poc-demo/optiplex--prime-k8s-golang--simple--echoservice--5c4c54bdf4--97lfz-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.205": [
+      {
+        "ip": "10.99.213.205",
+        "handle": "k8s-pod-network.b2d1654a8d95c03dcb73482d3745523fd5c94986e9d92fcca978c8d9eaa9f89c",
+        "pod": "fluentd-es-v3.1.0-dvwrf",
+        "namespace": "kube-logging",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-26 16:34:15.369896091 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(kube-logging/optiplex--prime-k8s-fluentd--es--v3.1.0--dvwrf-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.206": [
+      {
+        "ip": "10.99.213.206",
+        "handle": "k8s-pod-network.3d9f4dfb806b5582d5c30e3897235655d0006d184b937add3d90267eecca0e2d",
+        "pod": "el-eventlistener-dev-585fb5679f-wg2k8",
+        "namespace": "golang-cicd",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:43.771832363 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(golang-cicd/optiplex--prime-k8s-el--eventlistener--dev--585fb5679f--wg2k8-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.207": [
+      {
+        "ip": "10.99.213.207",
+        "handle": "k8s-pod-network.786285190ba9c5407548cba6bf64f44b237d7155338962b008a3253fac273c61",
+        "pod": "argocd-redis-6fb68d9df5-9m25n",
+        "namespace": "argocd",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:42.180344121 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(argocd/optiplex--prime-k8s-argocd--redis--6fb68d9df5--9m25n-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.208": [
+      {
+        "ip": "10.99.213.208",
+        "handle": "k8s-pod-network.200ea6c488443e5a7af85fcf673f693c019b77a96605812a3625fc92287e7d09",
+        "pod": "renderer-57655c7858-nvljk",
+        "namespace": "monitoring",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:41.183917375 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(monitoring/optiplex--prime-k8s-renderer--57655c7858--nvljk-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.209": [
+      {
+        "ip": "10.99.213.209",
+        "handle": "k8s-pod-network.2be866f14e93a0ef08bb33ee785b314068f41e375f21d323afae28ccf6276f7a",
+        "pod": "coredns-74ff55c5b-q5bp4",
+        "namespace": "kube-system",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:30.041795845 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(kube-system/optiplex--prime-k8s-coredns--74ff55c5b--q5bp4-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.210": [
+      {
+        "ip": "10.99.213.210",
+        "handle": "k8s-pod-network.5fd6c33bc6862e626e28efd8186448f0de89182938185bdbfe5fbc523fd864d1",
+        "pod": "tekton-pipelines-controller-fc64466f6-dm2tk",
+        "namespace": "tekton-pipelines",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:42.192535956 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(tekton-pipelines/optiplex--prime-k8s-tekton--pipelines--controller--fc64466f6--dm2tk-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.212": [
+      {
+        "ip": "10.99.213.212",
+        "handle": "k8s-pod-network.b8b15f1cbb14279a5765500345f7d0dc7c3ed1fb797b1c552bd61b415c69cbff",
+        "pod": "kibana-logging-86545d9d78-7wn44",
+        "namespace": "kube-logging",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:42.626278921 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(kube-logging/optiplex--prime-k8s-kibana--logging--86545d9d78--7wn44-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.215": [
+      {
+        "ip": "10.99.213.215",
+        "handle": "k8s-pod-network.34c67c35482cf7feeee47e35f50578368afedb2dae311709acebbca434bf3762",
+        "pod": "prometheus-adapter-767f58977c-bzxsr",
+        "namespace": "monitoring",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:31.326768492 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(monitoring/optiplex--prime-k8s-prometheus--adapter--767f58977c--bzxsr-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.224": [
+      {
+        "ip": "10.99.213.224",
+        "handle": "k8s-pod-network.32ba3f834ba4291cadb3cc0472e99508abc03a4d1320d72ebb0a62943f566559",
+        "pod": "argocd-application-controller-0",
+        "namespace": "argocd",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:34.600069643 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(argocd/optiplex--prime-k8s-argocd--application--controller--0-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.231": [
+      {
+        "ip": "10.99.213.231",
+        "handle": "k8s-pod-network.2c1d2cba9474642220950c6cf5fc6be6bcf53b2132baa260c5fd2823576f4d5e",
+        "pod": "argocd-server-849b89cf68-qkl5m",
+        "namespace": "argocd",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:43.077517775 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(argocd/optiplex--prime-k8s-argocd--server--849b89cf68--qkl5m-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.233": [
+      {
+        "ip": "10.99.213.233",
+        "handle": "k8s-pod-network.f93a4a47de6779ccd1f99abcf04032ef5793f7ce6c7cbd79638a7bc956535b40",
+        "pod": "alertmanager-main-1",
+        "namespace": "monitoring",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:37.312236326 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(monitoring/optiplex--prime-k8s-alertmanager--main--1-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.234": [
+      {
+        "ip": "10.99.213.234",
+        "handle": "k8s-pod-network.9dfd12015ad7380a8b400e66883e655aec415ac637278540abb87babb1528345",
+        "pod": "grafana-cb44b4cc-d9bd7",
+        "namespace": "monitoring",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:43.11008533 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(monitoring/optiplex--prime-k8s-grafana--cb44b4cc--d9bd7-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.235": [
+      {
+        "ip": "10.99.213.235",
+        "handle": "k8s-pod-network.4a9e1b5b396d9d4e101a8ea054d0ff728aa30a4062cc02af0eb2e9cb16fb0b58",
+        "pod": "alertmanager-main-0",
+        "namespace": "monitoring",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:37.317303268 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(monitoring/optiplex--prime-k8s-alertmanager--main--0-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.236": [
+      {
+        "ip": "10.99.213.236",
+        "handle": "k8s-pod-network.898a728bfa4d39491d461f2903db9cf50086008b198af73466fa5a41d233fa9e",
+        "pod": "metrics-server-5bb577dbd8-pvdrf",
+        "namespace": "kube-system",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:42.771599082 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(kube-system/optiplex--prime-k8s-metrics--server--5bb577dbd8--pvdrf-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.237": [
+      {
+        "ip": "10.99.213.237",
+        "handle": "k8s-pod-network.6851eb45e0ece12bb7432cd34609399e80bbd21c6ed175509126942e015407d5",
+        "pod": "blackbox-exporter-556d889b47-n2zxk",
+        "namespace": "monitoring",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:35.323234697 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(monitoring/optiplex--prime-k8s-blackbox--exporter--556d889b47--n2zxk-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.238": [
+      {
+        "ip": "10.99.213.238",
+        "handle": "k8s-pod-network.0e6aa9f18e1c413e9391330fa3c661a5e2c75e9a55fee76d6f7ef6a1fd680a4e",
+        "pod": "prometheus-operator-59976dc7d5-x2c5p",
+        "namespace": "monitoring",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:42.98996582 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(monitoring/optiplex--prime-k8s-prometheus--operator--59976dc7d5--x2c5p-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.240": [
+      {
+        "ip": "10.99.213.240",
+        "handle": "k8s-pod-network.dcc277f1fe1995bf7fdacae6f2fc4fd4c661046fcb68f3548a339812b50b4a33",
+        "pod": "prometheus-k8s-1",
+        "namespace": "monitoring",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:43.011760702 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(monitoring/optiplex--prime-k8s-prometheus--k8s--1-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.241": [
+      {
+        "ip": "10.99.213.241",
+        "handle": "k8s-pod-network.bbed32d8077d14f8c842db594297cd708d5ac9aa5aabccf863aea1df955e2aed",
+        "pod": "alertmanager-main-2",
+        "namespace": "monitoring",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:37.462008111 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(monitoring/optiplex--prime-k8s-alertmanager--main--2-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.242": [
+      {
+        "ip": "10.99.213.242",
+        "handle": "k8s-pod-network.825b3d4c1780216c5caab930fe518a5b5a8a3d32ad533863585aef609e8233e6",
+        "pod": "golang-elasticsearch-interface-f47857695-ljlwj",
+        "namespace": "poc-demo",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:41.182294541 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(poc-demo/optiplex--prime-k8s-golang--elasticsearch--interface--f47857695--ljlwj-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.243": [
+      {
+        "ip": "10.99.213.243",
+        "handle": "k8s-pod-network.e8c7c12b6261784a6577e95881ad81bfb9201c6e050d35dc9528d00025e07347",
+        "pod": "tekton-triggers-core-interceptors-69c8965fc7-tfc86",
+        "namespace": "tekton-pipelines",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:43.80730898 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(tekton-pipelines/optiplex--prime-k8s-tekton--triggers--core--interceptors--69c8965fc7--tfc86-eth0)"
+        ]
+      }
+    ],
+    "10.99.213.245": [
+      {
+        "ip": "10.99.213.245",
+        "handle": "k8s-pod-network.1da9f37b30ebba9fdc384375f2747241c5674a59481e09c81bf1416a36edca21",
+        "pod": "kube-state-metrics-544cf87cfd-cqdph",
+        "namespace": "monitoring",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:30.961980257 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(monitoring/optiplex--prime-k8s-kube--state--metrics--544cf87cfd--cqdph-eth0)"
+        ]
+      }
+    ],
+    "10.99.214.0": [
+      {
+        "ip": "10.99.214.0",
+        "handle": "k8s-pod-network.c25f581384c286ba384d1f6399bcc504eb226e12ee35aaf8681fccd2c579fb52",
+        "pod": "coredns-74ff55c5b-n2d2q",
+        "namespace": "kube-system",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:43.578177474 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(kube-system/optiplex--prime-k8s-coredns--74ff55c5b--n2d2q-eth0)"
+        ]
+      }
+    ],
+    "10.99.214.2": [
+      {
+        "ip": "10.99.214.2",
+        "handle": "k8s-pod-network.8bcab523f09a979e664afdfc78a162a69aa791ac378ddc9856bdc09ea752616a",
+        "pod": "prometheus-k8s-0",
+        "namespace": "monitoring",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:43.640462961 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(monitoring/optiplex--prime-k8s-prometheus--k8s--0-eth0)"
+        ]
+      }
+    ],
+    "10.99.214.3": [
+      {
+        "ip": "10.99.214.3",
+        "handle": "k8s-pod-network.2f845e967d2acec97b546dddbf54b53882743d2905d1cbbcb158886c4cae8a95",
+        "pod": "nfs-client-provisioner-7fd996f778-nfjgm",
+        "namespace": "nfs",
+        "node": "optiplex-prime",
+        "creationTimestamp": "2021-03-23 21:16:43.854741145 +0000 UTC",
+        "inUse": true,
+        "owners": [
+          "Workload(nfs/optiplex--prime-k8s-nfs--client--provisioner--7fd996f778--nfjgm-eth0)"
+        ]
+      }
+    ]
+  }
+}

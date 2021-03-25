@@ -1,0 +1,126 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: lmz-test
+  namespace: test
+  labels:
+    k8s-app: lmz-test
+    addonmanager.kubernetes.io/mode: Reconcile
+---
+
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: lmz-test
+  labels:
+    k8s-app: lmz-test
+    addonmanager.kubernetes.io/mode: Reconcile
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - "services"
+      - "namespaces"
+      - "endpoints"
+    verbs:
+      - "get"
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: test
+  name: lmz-test
+  labels:
+    k8s-app: lmz-test
+    addonmanager.kubernetes.io/mode: Reconcile
+subjects:
+  - kind: ServiceAccount
+    name: lmz-test
+    namespace: test
+    apiGroup: ""
+roleRef:
+  kind: ClusterRole
+  name: lmz-test
+  apiGroup: ""
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: lmz-cluster
+  namespace: test
+  labels:
+    k8s-app: lmz-test
+    addonmanager.kubernetes.io/mode: Reconcile
+spec:
+  serviceName: lmz-test
+  replicas: 3
+  selector:
+    matchLabels:
+      k8s-app: lmz-test
+      
+  template:
+    metadata:
+      labels:
+        k8s-app: lmz-test
+      
+    spec:
+      serviceAccountName: lmz-test
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: k8s-app
+                operator: In
+                values:
+                - lmz-test
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+        - resources:
+            limits:
+              cpu: 100m
+              memory: 100Mi
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          readinessProbe:
+            httpGet:
+              path: /api/v1/sys/info/isalive
+              port: 9000
+              scheme: HTTP
+            timeoutSeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 1
+          terminationMessagePath: /dev/termination-log
+          name: lmz-test
+          livenessProbe:
+            httpGet:
+              path: /api/v1/sys/info/isalive
+              port: 9000
+              scheme: HTTP
+            initialDelaySeconds: 55
+            timeoutSeconds: 5
+            periodSeconds: 60
+            successThreshold: 1
+            failureThreshold: 2
+          env:
+            - name: LOG_LEVEL
+              value: trace
+            - name: VERSION
+              value: 1.0.1
+            - name: SERVER_PORT
+              value: '9000'
+            - name: NAME
+              value: lmz-test
+          ports:
+            - containerPort: 9000
+              protocol: TCP
+          imagePullPolicy: Always
+          terminationMessagePolicy: File
+          image: >-
+            quay.io/luigizuccarelli/golang-simple-echoservice:1.15.6

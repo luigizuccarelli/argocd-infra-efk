@@ -1,6 +1,6 @@
 # ArgoCD-EFK-Deploy
 
-## Intro
+## Overview
 
 All the necessary yaml files to deploy the elsticsearch, fluentd and kibana in kubernetes
 

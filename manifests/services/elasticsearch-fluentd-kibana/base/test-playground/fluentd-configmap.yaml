@@ -1,8 +1,8 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: tcprod-fluentd
-  namespace: tcprod-efk
+  name: lmz-test
+  namespace: test
   labels:
     addonmanager.kubernetes.io/mode: Reconcile
 data:
@@ -430,7 +430,7 @@ data:
       @log_level info
       type_name _doc
       include_tag_key true
-      host tcprod-elastic.tcprod-efk.svc.cluster.local
+      host elasticsearch-logging
       port 9200
       logstash_format true
       <buffer>
